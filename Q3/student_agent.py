@@ -6,7 +6,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
-import matplotlib.pyplot as plt
 from torch.distributions import Normal, TransformedDistribution
 from torch.distributions.transforms import TanhTransform, AffineTransform
 
