@@ -60,7 +60,11 @@ class Agent(object):
         self.action_space = gym.spaces.Box(-1.0, 1.0, (21,), np.float64)
         self.actor = PolicyNetSAC(state_dim = 67, action_dim = 21, hidden_size=256)
         #load from policy.pth
-        self.actor.load_state_dict(torch.load("policy.pth"))
+        self.actor.load_state_dict(torch.load("policy_87.pth"))
+        self.reset_cnt = 0
 
     def act(self, observation):
+        if self.reset_cnt > 0:
+            self.reset_cnt -= 1
+            return np.zeros(21)
         return self.actor.get_action(observation)
